@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
-import { BarChart3 } from "lucide-react";
+import { BarChart3, Youtube } from "lucide-react";
 
 const QUESTIONS = [
   "لا أحب المشاركة في المناقشات الجماعية.",
@@ -172,6 +172,27 @@ export default function Survey() {
           </form>
         </CardContent>
       </Card>
+
+      <a
+        href="https://www.youtube.com/@esma3channel"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-testid="link-youtube-channel"
+        className="block group"
+      >
+        <div className="rounded-2xl border border-red-200 bg-red-50 dark:bg-red-950/20 dark:border-red-900 px-6 py-5 flex items-center gap-5 shadow-sm hover:shadow-md transition-all hover:border-red-400">
+          <div className="shrink-0 bg-red-600 text-white rounded-xl p-3 group-hover:bg-red-700 transition-colors">
+            <Youtube className="w-7 h-7" />
+          </div>
+          <div className="space-y-1">
+            <p className="text-sm text-red-500 font-medium">قناة اسمع على يوتيوب</p>
+            <p className="text-base font-bold text-foreground leading-snug">
+              مملكة الخيزران — الحلقة الثالثة
+            </p>
+            <p className="text-sm text-muted-foreground">د. طالب العذبه · youtube.com/@esma3channel</p>
+          </div>
+        </div>
+      </a>
     </div>
   );
 }
