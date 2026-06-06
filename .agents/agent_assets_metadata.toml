@@ -1,0 +1,14 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "eAstAnJdS2_-c_F1qLAJM"
+uri = "file://PRCA-24_Arabic.docx"
+type = "word_document"
+title = "PRCA-24 Arabic — ملف وورد"
+
+[[outputs]]
+id = "T38T5RrUsK2-i5a6Uaurt"
+uri = "file://PRCA-24_Arabic.pdf"
+type = "pdf"
+title = "PRCA-24 Arabic — ملف PDF"
