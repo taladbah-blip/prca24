@@ -12,3 +12,9 @@ id = "T38T5RrUsK2-i5a6Uaurt"
 uri = "file://PRCA-24_Arabic.pdf"
 type = "pdf"
 title = "PRCA-24 عربي — PDF (محدّث)"
+
+[[outputs]]
+id = "ZBBNZo7z6M2H50ZtBGXeZ"
+uri = "file://PRCA-24_Arabic.xlsx"
+type = "table"
+title = "PRCA-24 عربي — ملف Excel تفاعلي"
