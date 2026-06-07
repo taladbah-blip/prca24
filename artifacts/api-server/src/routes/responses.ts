@@ -36,91 +36,106 @@ router.post("/responses", async (req, res): Promise<void> => {
   const { answers, respondentName } = parsed.data;
   const scores = computeScores(answers);
 
-  const [row] = await db
-    .insert(surveyResponsesTable)
-    .values({
-      respondentName: respondentName ?? null,
-      answers,
-      totalScore: scores.total,
-      groupDiscussionScore: scores.groupDiscussion,
-      meetingsScore: scores.meetings,
-      interpersonalScore: scores.interpersonal,
-      publicSpeakingScore: scores.publicSpeaking,
-      apprehensionLevel: scores.apprehensionLevel,
-    })
-    .returning();
+  try {
+    const [row] = await db
+      .insert(surveyResponsesTable)
+      .values({
+        respondentName: respondentName ?? null,
+        answers,
+        totalScore: scores.total,
+        groupDiscussionScore: scores.groupDiscussion,
+        meetingsScore: scores.meetings,
+        interpersonalScore: scores.interpersonal,
+        publicSpeakingScore: scores.publicSpeaking,
+        apprehensionLevel: scores.apprehensionLevel,
+      })
+      .returning();
 
-  res.status(201).json({
-    id: row.id,
-    respondentName: row.respondentName,
-    answers: row.answers,
-    totalScore: row.totalScore,
-    groupDiscussionScore: row.groupDiscussionScore,
-    meetingsScore: row.meetingsScore,
-    interpersonalScore: row.interpersonalScore,
-    publicSpeakingScore: row.publicSpeakingScore,
-    apprehensionLevel: row.apprehensionLevel,
-    createdAt: row.createdAt.toISOString(),
-  });
+    res.status(201).json({
+      id: row.id,
+      respondentName: row.respondentName,
+      answers: row.answers,
+      totalScore: row.totalScore,
+      groupDiscussionScore: row.groupDiscussionScore,
+      meetingsScore: row.meetingsScore,
+      interpersonalScore: row.interpersonalScore,
+      publicSpeakingScore: row.publicSpeakingScore,
+      apprehensionLevel: row.apprehensionLevel,
+      createdAt: row.createdAt.toISOString(),
+    });
+  } catch (err) {
+    req.log.error({ err }, "Failed to save survey response");
+    res.status(503).json({ error: "تعذّر حفظ الإجابات، يرجى المحاولة مرة أخرى." });
+  }
 });
 
-router.get("/responses", async (_req, res): Promise<void> => {
-  const rows = await db
-    .select()
-    .from(surveyResponsesTable)
-    .orderBy(sql`${surveyResponsesTable.createdAt} desc`);
+router.get("/responses", async (req, res): Promise<void> => {
+  try {
+    const rows = await db
+      .select()
+      .from(surveyResponsesTable)
+      .orderBy(sql`${surveyResponsesTable.createdAt} desc`);
 
-  res.json(
-    rows.map((r) => ({
-      id: r.id,
-      respondentName: r.respondentName,
-      answers: r.answers,
-      totalScore: r.totalScore,
-      groupDiscussionScore: r.groupDiscussionScore,
-      meetingsScore: r.meetingsScore,
-      interpersonalScore: r.interpersonalScore,
-      publicSpeakingScore: r.publicSpeakingScore,
-      apprehensionLevel: r.apprehensionLevel,
-      createdAt: r.createdAt.toISOString(),
-    }))
-  );
+    res.json(
+      rows.map((r) => ({
+        id: r.id,
+        respondentName: r.respondentName,
+        answers: r.answers,
+        totalScore: r.totalScore,
+        groupDiscussionScore: r.groupDiscussionScore,
+        meetingsScore: r.meetingsScore,
+        interpersonalScore: r.interpersonalScore,
+        publicSpeakingScore: r.publicSpeakingScore,
+        apprehensionLevel: r.apprehensionLevel,
+        createdAt: r.createdAt.toISOString(),
+      }))
+    );
+  } catch (err) {
+    req.log.error({ err }, "Failed to fetch responses");
+    res.status(503).json({ error: "تعذّر جلب البيانات، يرجى المحاولة مرة أخرى." });
+  }
 });
 
-router.get("/responses/stats", async (_req, res): Promise<void> => {
-  const [totals] = await db
-    .select({
-      totalSubmissions: count(),
-      averageTotalScore: avg(surveyResponsesTable.totalScore),
-      averageGroupDiscussion: avg(surveyResponsesTable.groupDiscussionScore),
-      averageMeetings: avg(surveyResponsesTable.meetingsScore),
-      averageInterpersonal: avg(surveyResponsesTable.interpersonalScore),
-      averagePublicSpeaking: avg(surveyResponsesTable.publicSpeakingScore),
-    })
-    .from(surveyResponsesTable);
+router.get("/responses/stats", async (req, res): Promise<void> => {
+  try {
+    const [totals] = await db
+      .select({
+        totalSubmissions: count(),
+        averageTotalScore: avg(surveyResponsesTable.totalScore),
+        averageGroupDiscussion: avg(surveyResponsesTable.groupDiscussionScore),
+        averageMeetings: avg(surveyResponsesTable.meetingsScore),
+        averageInterpersonal: avg(surveyResponsesTable.interpersonalScore),
+        averagePublicSpeaking: avg(surveyResponsesTable.publicSpeakingScore),
+      })
+      .from(surveyResponsesTable);
 
-  const levelCounts = await db
-    .select({
-      apprehensionLevel: surveyResponsesTable.apprehensionLevel,
-      cnt: count(),
-    })
-    .from(surveyResponsesTable)
-    .groupBy(surveyResponsesTable.apprehensionLevel);
+    const levelCounts = await db
+      .select({
+        apprehensionLevel: surveyResponsesTable.apprehensionLevel,
+        cnt: count(),
+      })
+      .from(surveyResponsesTable)
+      .groupBy(surveyResponsesTable.apprehensionLevel);
 
-  const lowCount = levelCounts.find((r) => r.apprehensionLevel === "low")?.cnt ?? 0;
-  const moderateCount = levelCounts.find((r) => r.apprehensionLevel === "moderate")?.cnt ?? 0;
-  const highCount = levelCounts.find((r) => r.apprehensionLevel === "high")?.cnt ?? 0;
+    const lowCount = levelCounts.find((r) => r.apprehensionLevel === "low")?.cnt ?? 0;
+    const moderateCount = levelCounts.find((r) => r.apprehensionLevel === "moderate")?.cnt ?? 0;
+    const highCount = levelCounts.find((r) => r.apprehensionLevel === "high")?.cnt ?? 0;
 
-  res.json({
-    totalSubmissions: totals.totalSubmissions,
-    averageTotalScore: parseFloat(totals.averageTotalScore ?? "0"),
-    averageGroupDiscussion: parseFloat(totals.averageGroupDiscussion ?? "0"),
-    averageMeetings: parseFloat(totals.averageMeetings ?? "0"),
-    averageInterpersonal: parseFloat(totals.averageInterpersonal ?? "0"),
-    averagePublicSpeaking: parseFloat(totals.averagePublicSpeaking ?? "0"),
-    lowCount,
-    moderateCount,
-    highCount,
-  });
+    res.json({
+      totalSubmissions: totals.totalSubmissions,
+      averageTotalScore: parseFloat(totals.averageTotalScore ?? "0"),
+      averageGroupDiscussion: parseFloat(totals.averageGroupDiscussion ?? "0"),
+      averageMeetings: parseFloat(totals.averageMeetings ?? "0"),
+      averageInterpersonal: parseFloat(totals.averageInterpersonal ?? "0"),
+      averagePublicSpeaking: parseFloat(totals.averagePublicSpeaking ?? "0"),
+      lowCount,
+      moderateCount,
+      highCount,
+    });
+  } catch (err) {
+    req.log.error({ err }, "Failed to fetch stats");
+    res.status(503).json({ error: "تعذّر جلب الإحصائيات، يرجى المحاولة مرة أخرى." });
+  }
 });
 
 export default router;
