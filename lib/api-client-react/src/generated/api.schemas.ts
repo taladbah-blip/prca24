@@ -47,3 +47,10 @@ export interface SurveyStats {
   highCount: number;
 }
 
+export interface ScoresList {
+  /** Array of all total scores */
+  scores: number[];
+  /** Total number of responses */
+  total: number;
+}
+

@@ -70,6 +70,18 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SurveyStats"
+  /responses/scores:
+    get:
+      operationId: getScores
+      tags: [responses]
+      summary: Get all total scores for distribution chart
+      responses:
+        "200":
+          description: Array of total scores
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScoresList"
 components:
   schemas:
     HealthStatus:
@@ -160,3 +172,17 @@ components:
           type: integer
         highCount:
           type: integer
+    ScoresList:
+      type: object
+      required:
+        - scores
+        - total
+      properties:
+        scores:
+          type: array
+          items:
+            type: integer
+          description: Array of all total scores
+        total:
+          type: integer
+          description: Total number of responses

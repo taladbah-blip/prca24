@@ -7,6 +7,7 @@
  */
 
 export * from './healthStatus';
+export * from './scoresList';
 export * from './surveyResponse';
 export * from './surveyResponseInput';
 export * from './surveyStats';

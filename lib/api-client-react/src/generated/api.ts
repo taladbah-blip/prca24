@@ -21,6 +21,7 @@ import type {
 
 import type {
   HealthStatus,
+  ScoresList,
   SurveyResponse,
   SurveyResponseInput,
   SurveyStats
@@ -329,6 +330,83 @@ export function useGetStats<TData = Awaited<ReturnType<typeof getStats>>, TError
  ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
 
   const queryOptions = getGetStatsQueryOptions(options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+
+
+
+
+
+
+export const getGetScoresUrl = () => {
+
+
+
+
+  return `/api/responses/scores`
+}
+
+/**
+ * @summary Get all total scores for distribution chart
+ */
+export const getScores = async ( options?: RequestInit): Promise<ScoresList> => {
+
+  return customFetch<ScoresList>(getGetScoresUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetScoresQueryKey = () => {
+    return [
+    `/api/responses/scores`
+    ] as const;
+    }
+
+
+export const getGetScoresQueryOptions = <TData = Awaited<ReturnType<typeof getScores>>, TError = ErrorType<unknown>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getScores>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetScoresQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getScores>>> = ({ signal }) => getScores({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getScores>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetScoresQueryResult = NonNullable<Awaited<ReturnType<typeof getScores>>>
+export type GetScoresQueryError = ErrorType<unknown>
+
+
+/**
+ * @summary Get all total scores for distribution chart
+ */
+
+export function useGetScores<TData = Awaited<ReturnType<typeof getScores>>, TError = ErrorType<unknown>>(
+  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getScores>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetScoresQueryOptions(options)
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
 

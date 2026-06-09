@@ -96,6 +96,22 @@ router.get("/responses", async (req, res): Promise<void> => {
   }
 });
 
+router.get("/responses/scores", async (req, res): Promise<void> => {
+  try {
+    const rows = await db
+      .select({ totalScore: surveyResponsesTable.totalScore })
+      .from(surveyResponsesTable);
+
+    res.json({
+      scores: rows.map((r) => r.totalScore),
+      total: rows.length,
+    });
+  } catch (err) {
+    req.log.error({ err }, "Failed to fetch scores");
+    res.status(503).json({ error: "تعذّر جلب البيانات." });
+  }
+});
+
 router.get("/responses/stats", async (req, res): Promise<void> => {
   try {
     const [totals] = await db

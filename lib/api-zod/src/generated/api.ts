@@ -65,3 +65,12 @@ export const GetStatsResponse = zod.object({
 })
 
 
+/**
+ * @summary Get all total scores for distribution chart
+ */
+export const GetScoresResponse = zod.object({
+  "scores": zod.array(zod.number()).describe('Array of all total scores'),
+  "total": zod.number().describe('Total number of responses')
+})
+
+
