@@ -1,0 +1,99 @@
+2026-06-06T17:52:34.766Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T17:52:35.030Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T18:52:47.175Z artifact process exited with error artifact=artifacts/api-server error=signal: terminated
+2026-06-06T19:09:40.066Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T19:09:40.068Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T19:09:40.085Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T19:09:40.125Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T19:09:40.193Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T19:09:40.251Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T19:09:40.376Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T19:09:40.446Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:15:27.195Z artifact process exited with error artifact=artifacts/api-server error=signal: terminated
+2026-06-06T20:17:39.832Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:17:39.836Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:17:39.852Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:17:39.881Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:17:39.932Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:17:39.958Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:17:40.002Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:17:40.087Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:47:47.196Z artifact process exited with error error=signal: terminated artifact=artifacts/api-server
+2026-06-06T20:48:12.192Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:48:12.198Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:48:12.217Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:48:12.243Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:48:12.289Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:48:12.417Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:48:12.526Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:48:12.646Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:53:48.895Z healthcheck failed error=healthcheck /api: Get "http://127.0.0.1:1104/api": dial tcp 127.0.0.1:1104: connect: connection refused
+2026-06-06T20:53:48.903Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:53:48.919Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:53:48.959Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:53:49.001Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:53:49.115Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:53:49.267Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-06T20:53:53.595Z artifact process exited with error error=signal: terminated artifact=artifacts/api-server
+2026-06-07T06:06:02.825Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:06:02.826Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:06:02.834Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:06:02.845Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:06:02.864Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:06:02.919Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:06:02.977Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:06:08.446Z artifact process exited with error artifact=artifacts/api-server error=signal: terminated
+2026-06-07T06:19:40.918Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:19:40.924Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:19:40.934Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:19:40.960Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:19:41.026Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:19:41.042Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:19:41.293Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:19:46.454Z artifact process exited with error artifact=artifacts/api-server error=signal: terminated
+2026-06-07T06:32:25.309Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:32:25.314Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:32:25.325Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:32:25.410Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:32:25.622Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:32:25.909Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:32:26.544Z In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+2026-06-07T06:32:26.544Z To prepare for this change:
+2026-06-07T06:32:26.544Z (node:19) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+2026-06-07T06:32:31.382Z artifact process exited with error artifact=artifacts/api-server error=signal: terminated
+2026-06-07T06:38:29.202Z healthcheck failed error=healthcheck /api: Get "http://127.0.0.1:1104/api": dial tcp 127.0.0.1:1104: connect: connection refused
+2026-06-07T06:38:29.203Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:38:29.218Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:38:29.258Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:38:29.272Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:38:29.369Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:38:29.571Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:38:29.687Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-07T06:38:34.658Z artifact process exited with error error=signal: terminated artifact=artifacts/api-server
+2026-06-08T17:38:29.668Z artifact process exited with error error=signal: terminated artifact=artifacts/api-server
+2026-06-08T21:36:02.549Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T21:36:02.551Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T21:36:02.557Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T21:36:02.589Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T21:36:02.656Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T21:36:02.683Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T21:36:02.994Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T21:36:03.167Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T21:45:31.735Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T21:45:31.743Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T21:45:31.752Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T21:45:31.763Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T21:45:31.776Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T21:45:31.933Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T21:45:32.083Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T21:45:32.119Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T21:45:32.863Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T21:45:39.056Z artifact process exited with error artifact=artifacts/api-server error=signal: terminated
+2026-06-08T22:07:08.961Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T22:07:08.967Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T22:07:08.972Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T22:07:08.985Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T22:07:09.010Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T22:07:09.127Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T22:07:09.222Z healthcheck failed error=healthcheck /api returned status 500
+2026-06-08T22:07:09.481Z healthcheck failed error=healthcheck /api returned status 500
