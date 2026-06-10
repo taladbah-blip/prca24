@@ -18,3 +18,9 @@ id = "ZBBNZo7z6M2H50ZtBGXeZ"
 uri = "file://PRCA-24_Arabic.xlsx"
 type = "table"
 title = "PRCA-24 عربي — Excel تفاعلي (نتيجة تلقائية)"
+
+[[outputs]]
+id = "Ip8fQlYddgo3a-ODSROgQ"
+uri = "file://prca24-export.tar.gz"
+type = "unspecified"
+title = "PRCA-24 — كامل الكود المصدري"
